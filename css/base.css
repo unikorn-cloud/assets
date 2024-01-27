@@ -1,0 +1,164 @@
+/* Global constants */
+:root {
+	/* Brand color palette */
+	--brand-hue: 195;
+	--brand-sturation: 29%;
+	--brand-lightness: 27%;
+
+	--brand: hsl(var(--brand-hue), var(--brand-sturation), var(--brand-lightness));
+
+	/* Brand ligh/dark variations, used in hovers etc. */
+	--brand-lightness-light: 50%;
+	--brand-lightness-dark: 15%;
+
+	--brand-light: hsl(var(--brand-hue), var(--brand-sturation), var(--brand-lightness-light));
+	--brand-dark: hsl(var(--brand-hue), var(--brand-sturation), var(--brand-lightness-dark));
+
+        /* Generic colors */
+        --light-grey: rgb(200, 200, 200);
+        --mid-grey: rgb(128, 128, 128);
+        --dark-grey: rgb(96, 96, 96);
+	--error: deeppink;
+
+	/* Context specific colors */
+	--input: var(--brand);
+	--input-selected: var(--brand-light);
+	--border: var(--light-grey);
+        --overlay: rgba(255, 255, 255, 0.9);
+        --overlay-light: rgba(254, 250, 255, 0.7);
+        --background: rgb(231, 238, 240);
+
+	/* Various stylings to keep consistency */
+	--padding: 0.75rem;
+	--padding-small: 0.5rem;
+	--radius: 0.5rem;
+}
+
+/* Global styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	font-family: sans-serif;
+}
+body {
+	background-color: var(--background);
+}
+h1, h2, h3, h4, h5, h6 {
+	color: var(--brand);
+}
+a:link, a:visited {
+	transition: all 0.2s ease-in;
+	color: var(--input);
+}
+a:hover {
+	color: var(--input-selected);
+}
+input[type='text'], input[type='email'], input[type='password'], input[type='range'], select {
+	box-sizing: border-box;
+	background: none;
+	border: none;
+	width: 100%;
+	font-size: 1rem;
+	transition: all 0.2s ease-in;
+	color: inherit;
+}
+input[type='text'], input[type='email'], input[type='password'], select {
+	padding: var(--padding-small);
+	border-bottom: 2px solid var(--brand);
+	text-overflow: ellipsis;
+}
+input[type='text']:focus, input[type='email']:focus, input[type='password']:focus, input[type='range']:focus, select:focus {
+	outline: none;
+	color: inherit;
+}
+input[type='text']:invalid, input[type='password']:invalid, select:invalid {
+	box-shadow: 0 0 var(--radius) var(--error);
+}
+input[type='range']::-moz-range-track {
+	background-color: var(--brand);
+}
+input[type='range']::-webkit-slider-runnable-track {
+	background-color: var(--brand);
+}
+input[type='checkbox'] {
+	appearance: none;
+	display: grid;
+	place-content: center;
+	width: 1.5em;
+	height: 1.5em;
+	border: 2px solid var(--brand);
+}
+input[type='checkbox']:disabled {
+	border: 2px solid var(--mid-grey);
+}
+input[type='checkbox']::before {
+	content: '';
+	width: 0.75em;
+	height: 0.75em;
+	transform: scale(0);
+	transition: all 0.2s ease-in;
+	background-color: var(--brand);
+}
+input[type='checkbox']:disabled::before {
+	background-color: var(--mid-grey);
+}
+input[type='checkbox']:checked::before {
+	transform: scale(1);
+}
+button, input[type='submit'] {
+	padding: var(--padding-small);
+	font-size: 1rem;
+	transition: all 0.2s ease-in;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--padding-small);
+	cursor: pointer;
+	color: white;
+	background-color: var(--input);
+	border-radius: var(--radius);
+	border-style: none;
+}
+button:hover, input[type='submit']:hover {
+	background-color: var(--input-selected);
+}
+button:disabled, input[type='submit']:disabled {
+	cursor: not-allowed;
+	background-color: var(--mid-grey);
+}
+hr {
+	color: var(--border);
+}
+dl {
+	display: flex;
+	flex-direction: column;
+	gap: var(--padding);
+	font-size: 0.75rem;
+}
+dt {
+	font-weight: bold;
+}
+
+/* Global styles */
+.selectable {
+	cursor: pointer;
+}
+
+.error {
+	color: var(--error);
+}
+
+/* Desktop overrides */
+@media only screen and (min-width: 720px) {
+	dl {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-auto-flow: column;
+		grid-gap: calc(var(--padding) / 2) var(--padding);
+	}
+	dt {
+		grid-column-start: 1;
+	}
+}
