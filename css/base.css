@@ -14,6 +14,9 @@
 	--brand-light: hsl(var(--brand-hue), var(--brand-sturation), var(--brand-lightness-light));
 	--brand-dark: hsl(var(--brand-hue), var(--brand-sturation), var(--brand-lightness-dark));
 
+	/* Backgrounds */
+	--background-image: url('https://unikorn-cloud.github.io/assets/images/backgrounds/light/clouds/1000x667.jpg');
+
         /* Generic colors */
         --light-grey: rgb(200, 200, 200);
         --mid-grey: rgb(128, 128, 128);
@@ -25,7 +28,7 @@
 	--input-selected: var(--brand-light);
 	--border: var(--light-grey);
         --overlay: rgba(255, 255, 255, 0.9);
-        --overlay-light: rgba(254, 250, 255, 0.7);
+        --overlay-light: rgba(254, 250, 255, 0.4);
         --background: rgb(231, 238, 240);
 
 	/* Various stylings to keep consistency */
@@ -152,6 +155,9 @@ dt {
 
 /* Desktop overrides */
 @media only screen and (min-width: 720px) {
+	:root {
+		--background-image: url('https://unikorn-cloud.github.io/assets/images/backgrounds/light/clouds/6144x4096.jpg');
+	}
 	dl {
 		display: grid;
 		grid-template-columns: auto 1fr;
@@ -161,4 +167,30 @@ dt {
 	dt {
 		grid-column-start: 1;
 	}
+}
+
+/* Dark mode preference */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-image: url('https://unikorn-cloud.github.io/assets/images/backgrounds/dark/clouds/1000x667.jpg');
+
+		--overlay: rgba(40, 40, 40, 0.7);
+		--overlay-light: rgba(40, 40, 40, 0.4);
+		--background: rgb(7, 18, 21);
+		--border: rgb(80, 80, 80);
+	}
+	body {
+		background-color: var(--background);
+		color: #eee;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		color: #eee;
+	}
+}
+
+/* Darkmode and desktop, note this must come last to override the other non-composite defaults */
+@media only screen and (min-width: 720px) and (prefers-color-scheme: dark) {
+	:root {
+                --background-image: url('https://unikorn-cloud.github.io/assets/images/backgrounds/dark/clouds/3000x2000.jpg');
+        }
 }
