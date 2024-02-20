@@ -5,14 +5,11 @@
 	--brand-sturation: 29%;
 	--brand-lightness: 27%;
 
-	--brand: hsl(var(--brand-hue), var(--brand-sturation), var(--brand-lightness));
+	--brand: rgb(73, 1187, 132);
 
 	/* Brand ligh/dark variations, used in hovers etc. */
-	--brand-lightness-light: 50%;
-	--brand-lightness-dark: 15%;
-
-	--brand-light: hsl(var(--brand-hue), var(--brand-sturation), var(--brand-lightness-light));
-	--brand-dark: hsl(var(--brand-hue), var(--brand-sturation), var(--brand-lightness-dark));
+	--brand-light: rgb(101, 162, 181);
+	--brand-dark: rgb(50, 80, 90);
 
 	/* Backgrounds */
 	--background-image: url('https://unikorn-cloud.github.io/assets/images/backgrounds/light/clouds/1000x667.jpg');
@@ -30,6 +27,7 @@
         --overlay: rgba(255, 255, 255, 0.9);
         --overlay-light: rgba(254, 250, 255, 0.4);
         --background: rgb(231, 238, 240);
+	--shadow: var(--mid-grey);
 
 	/* Various stylings to keep consistency */
 	--padding: 0.75rem;
@@ -117,12 +115,13 @@ button, input[type='submit'] {
 	transition: all 0.2s ease-in;
 	display: inline-flex;
 	align-items: center;
-	gap: var(--padding-small);
+	gap: var(--padding);
 	cursor: pointer;
 	color: white;
 	background-color: var(--input);
 	border-radius: var(--radius);
 	border-style: none;
+	box-shadow: 0 0 var(--radius) var(--shadow);
 }
 button:hover, input[type='submit']:hover {
 	background-color: var(--input-selected);
@@ -178,6 +177,7 @@ dt {
 		--overlay-light: rgba(40, 40, 40, 0.4);
 		--background: rgb(7, 18, 21);
 		--border: rgb(80, 80, 80);
+		--shadow: rgba(0, 0, 0, 0.6);
 	}
 	body {
 		background-color: var(--background);
